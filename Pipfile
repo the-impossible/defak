@@ -4,18 +4,16 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-django = "*"
-stripe = "*"
-xhtml2pdf = "*"
-pillow = "*"
 django-crispy-forms = "*"
-bcrypt = "*"
-argon2-cffi = "*"
+django = "==4.1"
+pillow = "==9.2.0"
+reportlab = "==3.6.10"
+stripe = "==3.5.0"
+xhtml2pdf = "==0.2.8"
+six = "==1.16.0"
+crispy-bootstrap4 = "*"
 
 [dev-packages]
 
 [requires]
 python_version = "3.10"
-
-[pipenv]
-allow_prereleases = true

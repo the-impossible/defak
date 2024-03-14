@@ -30,7 +30,7 @@
 										<img class="img-fluid embed-responsive-item mt-2" src="{{ product.image.url }} " alt="">
 									</div>
 									<div class="card-body">
-									<h5 class="card-title text-center">{{ product.title }}</h5>
+									<h5 class="card-title text-center">{{ product.title|truncatechars:35}}</h5>
 								</a>
 									<p class="card-text"><b>Price:</b> ₦{{product.price}}</p>
 									<p class="card-text"><b>Quantity:</b> {{product.quantity}}</p>

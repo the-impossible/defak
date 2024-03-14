@@ -14,7 +14,7 @@
           {% for order_item in orders.product.all  %}
           <tr>
              <td>{{ forloop.counter }}</td>
-             <td>{{ order_item.product.title }}</td>
+             <td>{{ order_item.product.title|truncatechars:20 }}</td>
              <td>{{ order_item.product.price }}</td>
              <td>
                 <a href="{% url 'basics:remove_from_cart' order_item.product.slug ' ' %}" class="fa fa-minus btn btn-outline-primary btn-sm"></a>
@@ -33,12 +33,17 @@
           </tr>
           <tr>
              <td colspan="6">
-                <a href="{% url 'auth:checkout' %}" class="btn btn-warning float-right ml-3">Proceed to Checkout</a>
+
+               {% if orders.get_total > 0 %}
+
+               <a href="{% url 'auth:checkout' %}" class="btn btn-warning float-right ml-3">Proceed to Checkout</a>
+               {% endif %}
+
 
                 {% if request.user.is_authenticated %}
-                <a href="{% url 'auth:all_products' %}" class="btn btn-primary float-right">Continue Shopping</a>
+                <a href="{% url 'auth:all_products' %}" class="btn btn-primary float-right">Continue Order</a>
                 {% else %}
-                <a href="{% url 'basics:product' %}" class="btn btn-primary float-right">Continue Shopping</a>
+                <a href="{% url 'basics:product' %}" class="btn btn-primary float-right">Continue Order</a>
                 {% endif %}
 
              </td>

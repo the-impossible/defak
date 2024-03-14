@@ -12,7 +12,7 @@
 			<div class="col p-md-0">
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="{% url 'auth:dashboard' %}">Dashboard</a></li>
-					<li class="breadcrumb-item active"><a href="{% url 'auth:my_orders' %}"> My orders</a></li>
+					<li class="breadcrumb-item active"><a href="{% url 'auth:my_orders' %}"> My sales</a></li>
 				</ol>
 			</div>
 		</div>
@@ -23,7 +23,7 @@
 				<div class="col-lg-7 mx-auto">
 					<div class="card">
 						<div class="card-body">
-							<h4 class="card-header">{{ object.user.fullname }} purchase details
+							<h4 class="card-header">{{ object.billing.fullname }} purchase details
 								{% if request.user.is_superuser %}
 								<form action="{% url 'auth:confirm_delivery' %}" class="mb-4" method="post">
 									{% csrf_token %}
@@ -36,13 +36,7 @@
 								</form>
 								{% endif %}
 							</h4>
-							<hr>
-							{% if  object.delivered  %}
-							<p class="text-center text-success"> Delivered Successfully
-								{% else %}
-							<p class="text-center text-warning"> Pending Delivery
-							{% endif %}
-							</p>
+
 							<hr>
 							{% for item in object.product.all  %}
 							<div class="media align-items-center mb-4">

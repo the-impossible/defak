@@ -5,16 +5,36 @@
             <li class="nav-label">
                 <a class="nav-text" href="{% url 'auth:dashboard' %}" aria-expanded="false">Dashboard</a>
             </li>
-            {% if request.user.is_staff %}
-            <li class="mega-menu mega-menu-sm">
+            <li class="nav-label">Orders</li>
+            <li>
                 <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                    <i class="icon-people menu-icon"></i><span class="nav-text">Customer</span>
+                    <i class="icon-screen-tablet menu-icon"></i><span class="nav-text">Orders</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="{% url 'auth:add_customer' %}">Create Customer Account</a></li>
-                    <li><a href="{% url 'auth:manage_customer' %}">Manage Customer Account</a></li>
+                    <li><a href="{% url 'auth:order_summary' %}">Cart</a></li>
+                    <li><a href="{% url 'auth:my_orders' %}">
+                    {% if request.user.is_staff %}
+                    All Orders
+                    {% else %}
+                    Orders
+                    {% endif %}
+                    </a></li>
                 </ul>
             </li>
+            {% if request.user.is_staff %}
+            <li class="nav-label">Accounts</li>
+
+
+            <li class="mega-menu mega-menu-sm">
+                <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                    <i class="icon-people menu-icon"></i><span class="nav-text">Users</span>
+                </a>
+                <ul aria-expanded="false">
+                    <li><a href="{% url 'auth:add_customer' %}">Create Users Account</a></li>
+                    <li><a href="{% url 'auth:manage_customer' %}">Manage Users Account</a></li>
+                </ul>
+            </li>
+
             <li class="mega-menu mega-menu-sm">
                 <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                     <i class="icon-shield menu-icon"></i><span class="nav-text">Admin</span>
@@ -38,16 +58,7 @@
                     {% endif %}
                 </ul>
             </li>
-            <li class="nav-label">Orders</li>
-            <li>
-                <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                    <i class="icon-screen-tablet menu-icon"></i><span class="nav-text">Orders</span>
-                </a>
-                <ul aria-expanded="false">
-                    <li><a href="{% url 'auth:order_summary' %}">Cart</a></li>
-                    <li><a href="{% url 'auth:my_orders' %}">Orders</a></li>
-                </ul>
-            </li>
+
             <li>
                 <a style="cursor: pointer;" href="{% url 'auth:profile' request.user.id %}" aria-expanded="false">
                     <i class="icon-user menu-icon"></i><span class="nav-text">Profile</span>

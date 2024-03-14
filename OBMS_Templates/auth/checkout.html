@@ -102,7 +102,7 @@
 							<div class="basic-list-group">
 								<ul class="list-group">
 									{% for order_item in order.product.all  %}
-									<li class="list-group-item d-flex justify-content-between align-items-center">{{ order_item.product.title }} <span class="badge badge-primary badge-pill">{{ order_item.quantity }}</span>
+									<li class="list-group-item d-flex justify-content-between align-items-center">{{ order_item.product.title|truncatechars:30 }} <span class="badge badge-primary badge-pill">{{ order_item.quantity }}</span>
 									</li>
 									{% endfor %}
 									<li class="list-group-item d-flex justify-content-between align-items-center"><b>Total</b> <span class="badge badge-primary badge-pill">₦{{ orders.get_total }}</span>

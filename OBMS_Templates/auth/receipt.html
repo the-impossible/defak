@@ -105,14 +105,14 @@
         <div style="text-align: center; margin: auto; line-height: 1.5; font-size: 14px; color: #4a4a4a;">
             <img src="{% static 'images/logo.png' %}" width="200" alt="">
             <p style="font-weight: bold; color: #000; margin-top: 15px; font-size: 15px;">
-              No. 1-4 Jema'a road by junction road kaduna
+              Investment Quarters Bauchi Road Gombe State
             </p>
             <p style="margin: 15px auto;"><i>Payment confirmation slip</i></p>
             <hr style="border: 1px dashed rgb(131, 131, 131); margin: 25px auto">
         </div>
-        <p style="font-size: 13px;line-height: 2.0">Purchased by: {{ order.user.fullname }}</p>
-        <p style="font-size: 13px;line-height: 2.0">Phone No.: {{ order.user.phone }}</p>
-        <p style="font-size: 13px;line-height: 2.0">Email: {{ order.user.email }}</p>
+        <p style="font-size: 13px;line-height: 2.0">Purchased by: {{ order.billing.fullname }}</p>
+        <p style="font-size: 13px;line-height: 2.0">Phone No.: {{ order.billing.phone }}</p>
+        <p style="font-size: 13px;line-height: 2.0">Email: {{ order.billing.email }}</p>
 
         <hr style="border: 1px dashed rgb(131, 131, 131); margin: 25px auto">
         <table style="width: 100%; table-layout: fixed">

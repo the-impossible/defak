@@ -36,20 +36,16 @@
 											<th>S/N</th>
 											<th>Title</th>
 											<th>order_date</th>
-											<th>Ordered Status</th>
+											<th>Sales Status</th>
 											<th>Shipping Address</th>
-											<th>Materials Delivery</th>
 											<th>Payment Date</th>
-											{% if request.user.is_superuser %}
-											<th>Action</th>
-											{% endif %}
 										</tr>
 									</thead>
 									<tbody>
 										{% for product in object_list  %}
 										<tr>
 											<td>{{ forloop.counter }}</td>
-											<td type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="click to view purchase details"><a href="{% url 'auth:my_orders_details' product.pk %}">Material Purchase</a></td>
+											<td type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="click to view purchase details"><a href="{% url 'auth:my_orders_details' product.pk %}">Part Purchase</a></td>
 											<td>{{ product.order_date }}</td>
 											{% if product.ordered %}
 											<td class="bg-success text-white">True
@@ -58,26 +54,8 @@
 											{% endif %}
 											</td>
 											<td>{{ product.billing }}</td>
-											{% if product.delivered %}
-											<td class="bg-success text-white">Received
-											{% else %}
-											<td class="bg-warning text-white">Pending
-											{% endif %}
-											</td>
+
 											<td>{{ product.payment.date_created }}</td>
-											{% if request.user.is_superuser %}
-											<td>
-												<form action="{% url 'auth:confirm_delivery' %}" method="post">
-													{% csrf_token %}
-													<input type="hidden" value="{{product.pk}}" name="key">
-													{% if product.delivered %}
-													<button class="btn btn-warning btn-sm" name="undo">Not Delivered?</button>
-													{% else %}
-													<button class="btn btn-info btn-sm" name="do">Delivered?</button>
-												{% endif %}
-												</form>
-											</td>
-											{% endif %}
 										</tr>
 										{% endfor %}
 									</tbody>
@@ -88,9 +66,9 @@
 								<div class="card-body">
 									<h5 class="card-title">No Order!</h5>
 									{% if request.user.is_superuser %}:
-									<p class="card-text">No record found customers are yet make purchase.</p>
+									<p class="card-text">No Order record.</p>
 									{% else %}
-									<p class="card-text">No record found kindly add to cart to make purchase.</p><a href="{% url 'auth:all_products' %}" class="btn btn-primary">View Products</a>
+									<p class="card-text">No Order record found add purchase to cart.</p><a href="{% url 'auth:all_products' %}" class="btn btn-primary">View Products</a>
 									{% endif %}
 								</div>
 							</div>
